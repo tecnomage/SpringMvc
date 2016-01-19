@@ -17,27 +17,28 @@
 		<div>
 			<label>Título</label>
 			<form:errors path="titulo"/>
-			<input type="text" name="titulo">
+			<input type="text" name="titulo"/>
 		</div>
+			
 			<div>
-			<label>Descrição</label>
-			<form:errors path="descricao"/>
-			<textarea rows="10" cols=20 
-			name="descricao">
-			</textarea>
+				<label>Descrição</label>
+				<form:errors path="descricao"/>
+				<textarea rows="10" cols=20 
+				name="descricao">
+				</textarea>
 			</div>
 			
 			<div>
-			<label>Páginas</label>
-			<form:errors path="paginas"/>
-			<input type="text" name="paginas">
+				<label>Paginas</label>
+				<input type="text" name="paginas"/>
+				<form:errors path="paginas"/>
 			</div>
 			
 			<div>
 	            <label>Data de lançamento</label>
-	             <input name="dataLancamento" type="text" />
 	            <form:errors path="dataLancamento" />
-        	</div>
+	             <input name="dataLancamento" type="text" />
+	        </div>
 		
 		<!-- esse tipos vem de produto controller -->
 		<!-- o binding é feito pelo modelAndView -->	<!-- o foreach tem essa Varstatus que permite manter um índice -->	

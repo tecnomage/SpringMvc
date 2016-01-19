@@ -3,7 +3,6 @@ package org.SpringMvc.loja.controller;
 import java.util.List;
 
 import javax.validation.Valid;
-import javax.xml.bind.Binder;
 
 import org.SpringMvc.loja.daos.ProdutoDao;
 import org.SpringMvc.loja.modelos.Produto;

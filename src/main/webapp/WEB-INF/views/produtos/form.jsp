@@ -36,7 +36,7 @@
 			<div>
 	            <label>Data de lançamento</label>
 	            <form:errors path="dataLancamento" />
-	             <form:input name="dataLancamento" type="text" />
+	             <form:input path="dataLancamento" />
 	        </div>
 		
 		<!-- esse tipos vem de produto controller -->

@@ -44,7 +44,7 @@ public class ProdutosController {
 	public ModelAndView gravar(@Valid Produto produto, BindingResult result){
 		
 		if(result.hasErrors()){
-			return form();
+			return form(produto);
 		}
 			
 		produtoDao.gravar(produto);

@@ -17,27 +17,26 @@
 		<div>
 			<label>Título</label>
 			<form:errors path="titulo"/>
-			<input type="text" name="titulo"/>
+			<form:input type="text" path="titulo"/>
 		</div>
 			
 			<div>
 				<label>Descrição</label>
 				<form:errors path="descricao"/>
-				<textarea rows="10" cols=20 
-				name="descricao">
-				</textarea>
+				<form:textarea rows="10" cols=20 path="descricao"/>
+				
 			</div>
 			
 			<div>
 				<label>Paginas</label>
-				<input type="text" name="paginas"/>
+				<form:input type="text" path="paginas"/>
 				<form:errors path="paginas"/>
 			</div>
 			
 			<div>
 	            <label>Data de lançamento</label>
 	            <form:errors path="dataLancamento" />
-	             <input name="dataLancamento" type="text" />
+	             <form:input name="dataLancamento" type="text" />
 	        </div>
 		
 		<!-- esse tipos vem de produto controller -->

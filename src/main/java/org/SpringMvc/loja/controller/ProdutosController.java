@@ -31,7 +31,7 @@ public class ProdutosController {
 	}
 	
 	@RequestMapping("/form")
-	public ModelAndView form(){
+	public ModelAndView form(Produto produto){
 		 ModelAndView ModelAndView = new ModelAndView("produtos/form");
 		 ModelAndView.addObject("tipos",TipoPreco.values());
 		

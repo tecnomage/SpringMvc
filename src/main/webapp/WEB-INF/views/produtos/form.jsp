@@ -52,7 +52,11 @@
             </div>
 		</c:forEach>
 		
-		
+		<div>
+			<label>Súmario</label>
+			<input type="file" name="sumario" />
+					
+		</div>
 		
 		<button type="submit">Cadastrar</button>	
 	</form:form>

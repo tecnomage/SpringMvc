@@ -1,6 +1,9 @@
  package org.SpringMvc.loja.conf;
 
 
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration.Dynamic;
+
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -35,5 +38,12 @@ public class ServletSpringMvc extends AbstractAnnotationConfigDispatcherServletI
 		
 		return new javax.servlet.Filter[] {encodingFilter};
 	}
+	
+	@Override
+	protected void customizeRegistration(Dynamic registration) {
+		// TODO Auto-generated method stub
+		registration.setMultipartConfig(new MultipartConfigElement(""));
+	}
+	
 	
 }

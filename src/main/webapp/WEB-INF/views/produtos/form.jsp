@@ -13,7 +13,8 @@
 </head>
 <body>
 	
-	<form:form action="/SpringMvc/produtos" method="POST" commandName="produto">
+	<form:form action="/SpringMvc/produtos" method="POST" 
+	commandName="produto"	enctype="multipart/form-data">
 		<div>
 			<label>Título</label>
 			<form:errors path="titulo"/>
@@ -23,7 +24,7 @@
 			<div>
 				<label>Descrição</label>
 				<form:errors path="descricao"/>
-				<form:textarea rows="10" cols=20 path="descricao"/>
+				<form:textarea rows="10" cols="20" path="descricao"/>
 				
 			</div>
 			

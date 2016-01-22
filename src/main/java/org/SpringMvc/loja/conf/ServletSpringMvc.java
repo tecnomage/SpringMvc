@@ -4,6 +4,7 @@
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletRegistration.Dynamic;
 
+import org.SpringMvc.loja.infra.Filesaver;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -19,7 +20,8 @@ public class ServletSpringMvc extends AbstractAnnotationConfigDispatcherServletI
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class[]{AppWebConfiguration.class,JpaConfiguration.class};
+		return new Class[]{AppWebConfiguration.class,JpaConfiguration.class,
+				Filesaver.class};
 	}
 
 	@Override

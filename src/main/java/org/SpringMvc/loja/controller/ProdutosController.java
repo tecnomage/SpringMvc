@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.SpringMvc.loja.daos.ProdutoDao;
+import org.SpringMvc.loja.infra.Filesaver;
 import org.SpringMvc.loja.modelos.Produto;
 import org.SpringMvc.loja.modelos.TipoPreco;
 import org.SpringMvc.loja.validation.ProdutoValidation;
@@ -25,6 +26,9 @@ public class ProdutosController {
 	@Autowired
 	private ProdutoDao produtoDao;
 	
+	@Autowired
+	private Filesaver filesaver;
+	
 	@InitBinder
 	public void initBind(WebDataBinder dataBinder) {
 		dataBinder.addValidators(new ProdutoValidation());
@@ -44,12 +48,20 @@ public class ProdutosController {
 	@RequestMapping(method=RequestMethod.POST)
 	public ModelAndView gravar(MultipartFile sumario ,@Valid Produto produto, BindingResult result){
 		
+		
+		
 		System.out.println(sumario.getOriginalFilename());
 		
 		if(result.hasErrors()){
 			return form(produto);
 		}
 			
+		//seta o arq onde será salvo o sumario-file
+		String path = filesaver.write("arquivos-sumario", sumario);
+		//seta o arquivo no produto
+		produto.setSumarioPath(path);
+		
+		
 		produtoDao.gravar(produto);
 		return new ModelAndView("redirect:produtos/ok");
 		

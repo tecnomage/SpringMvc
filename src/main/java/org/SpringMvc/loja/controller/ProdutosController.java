@@ -48,8 +48,6 @@ public class ProdutosController {
 	@RequestMapping(method=RequestMethod.POST)
 	public ModelAndView gravar(MultipartFile sumario ,@Valid Produto produto, BindingResult result){
 		
-		
-		
 		System.out.println(sumario.getOriginalFilename());
 		
 		if(result.hasErrors()){

@@ -65,6 +65,14 @@ public class ProdutosController {
 		
 	}
 
+	@RequestMapping("/detalhe")
+	public ModelAndView Detalhe(Integer id){
+		ModelAndView modelAndView = new ModelAndView("/produtos/detalhe");
+		Produto produto= (Produto) produtoDao.find(id);
+		modelAndView.addObject("produto", produto);
+		
+		return modelAndView;
+	}
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView listar(){

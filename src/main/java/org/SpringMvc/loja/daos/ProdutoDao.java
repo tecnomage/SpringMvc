@@ -29,4 +29,15 @@ public class ProdutoDao {
 		return manager.createQuery("Select p from Produto p",Produto.class).getResultList();
 				
 	}
+
+
+	public Produto find(Integer id) {
+		// TODO Auto-generated method stub
+		return (Produto)manager.createQuery("select distinct(p) from Produto p "
+				+ "fetch join p.preco where p.id = :id", Produto.class)
+				.setParameter("id", id)
+				.getSingleResult();
+	}
+	
+	
 }

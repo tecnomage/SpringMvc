@@ -33,10 +33,21 @@ public class ProdutoDao {
 
 	public Produto find(Integer id) {
 		// TODO Auto-generated method stub
-		return (Produto)manager.createQuery("select distinct(p) from Produto p "
-				+ "fetch join p.preco where p.id = :id", Produto.class)
+		//System.out.println("com fetch all");
+		System.out.println("consulta original");	
+		//consulta que nao está funcionando
+		return manager.createQuery("select distinct(p) from Produto p "
+				+ " join fetch p.precos where p.id = :id", Produto.class)
 				.setParameter("id", id)
 				.getSingleResult();
+		
+		/** nao funciona, pega no stackOverFlow
+		return manager.createQuery("Select distinct(p) from Produto p "
+				+ "fetch all properties p.precos where p.id = :id", Produto.class)
+				.setParameter("id", id)
+				.getSingleResult();
+		*/
+		
 	}
 	
 	

@@ -24,9 +24,10 @@
 		<td>${produto.titulo}</td>
 		<td>${produto.descricao}</td>
 		<td>${produto.paginas}</td>
-		<td><a href="${s:mvcUrl('#detalhe').arg(0,produto.id).build()}">${produto.titulo}</a></td>
+		<td><a href="${s:mvcUrl('PC#detalhe').arg(0,produto.id).build()}">${produto.titulo}</a></td>
 		</tr>
 		</c:forEach>
 		</table>
+	 	
 </body>
 </html>

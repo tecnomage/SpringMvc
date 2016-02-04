@@ -77,7 +77,7 @@ public class ProdutosController {
 	}*/
 	
 	@RequestMapping("/detalhe/{id}")
-	public ModelAndView Detalhe(@PathVariable("id") Integer id){
+	public ModelAndView detalhe(@PathVariable("id") Integer id){
 		ModelAndView modelAndView = new ModelAndView("/produtos/detalhe");
 		Produto produto= produtoDao.find(id);
 		modelAndView.addObject("produto", produto);
@@ -89,6 +89,7 @@ public class ProdutosController {
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView listar(){
 		List<Produto> produtos= produtoDao.listar();
+		System.out.println("erro persiste");
 		ModelAndView modelAndView = new ModelAndView("/produtos/lista");
 		modelAndView.addObject("produtos",produtos);		
 		return modelAndView;

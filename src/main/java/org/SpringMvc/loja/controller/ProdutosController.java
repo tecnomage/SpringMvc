@@ -23,75 +23,72 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/produtos")
 public class ProdutosController {
-	
+
 	@Autowired
 	private ProdutoDao produtoDao;
-	
+
 	@Autowired
 	private Filesaver filesaver;
-	
+
 	@InitBinder
 	public void initBind(WebDataBinder dataBinder) {
 		dataBinder.addValidators(new ProdutoValidation());
-		
-	}
-	
-	@RequestMapping("/form")
-	public ModelAndView form(Produto produto){
-		 ModelAndView ModelAndView = new ModelAndView("produtos/form");
-		 ModelAndView.addObject("tipos",TipoPreco.values());
-		
-		 System.out.println("acessando produto controller");
-		
-		return ModelAndView;
-	}
-	
-	@RequestMapping(method=RequestMethod.POST)
-	public ModelAndView gravar(MultipartFile sumario ,@Valid Produto produto, BindingResult result){
-		
-		System.out.println(sumario.getOriginalFilename());
-		
-		if(result.hasErrors()){
-			return form(produto);
-		}
-			
-		//seta o arq onde será salvo o sumario-file
-		String path = filesaver.write("arquivos-sumario", sumario);
-		//seta o arquivo no produto
-		produto.setSumarioPath(path);
-		
-		
-		produtoDao.gravar(produto);
-		return new ModelAndView("redirect:produtos/ok");
-		
+
 	}
 
-	/**	
-	@RequestMapping("/detalhe")
-	public ModelAndView Detalhe(Integer id){
-		ModelAndView modelAndView = new ModelAndView("/produtos/detalhe");
-		Produto produto= produtoDao.find(id);
-		modelAndView.addObject("produto", produto);
-		
-		return modelAndView;
-	}*/
-	
+	@RequestMapping("/form")
+	public ModelAndView form(Produto produto) {
+		ModelAndView ModelAndView = new ModelAndView("produtos/form");
+		ModelAndView.addObject("tipos", TipoPreco.values());
+
+		System.out.println("acessando produto controller");
+
+		return ModelAndView;
+	}
+
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView gravar(MultipartFile sumario, @Valid Produto produto, BindingResult result) {
+
+		System.out.println(sumario.getOriginalFilename());
+
+		if (result.hasErrors()) {
+			return form(produto);
+		}
+
+		// seta o arq onde será salvo o sumario-file
+		String path = filesaver.write("arquivos-sumario", sumario);
+		// seta o arquivo no produto
+		produto.setSumarioPath(path);
+
+		produtoDao.gravar(produto);
+		return new ModelAndView("redirect:produtos/ok");
+
+	}
+
+	/**
+	 * @RequestMapping("/detalhe") public ModelAndView Detalhe(Integer id){
+	 * ModelAndView modelAndView = new ModelAndView("/produtos/detalhe");
+	 * Produto produto= produtoDao.find(id); modelAndView.addObject("produto",
+	 * produto);
+	 * 
+	 * return modelAndView; }
+	 */
+
 	@RequestMapping("/detalhe/{id}")
-	public ModelAndView detalhe(@PathVariable("id") Integer id){
+	public ModelAndView detalhe(@PathVariable("id") Integer id) {
 		ModelAndView modelAndView = new ModelAndView("/produtos/detalhe");
-		Produto produto= produtoDao.find(id);
+		Produto produto = produtoDao.find(id);
 		modelAndView.addObject("produto", produto);
-		
+
 		return modelAndView;
 	}
-	
-	
-	@RequestMapping(method=RequestMethod.GET)
-	public ModelAndView listar(){
-		List<Produto> produtos= produtoDao.listar();
+
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView listar() {
+		List<Produto> produtos = produtoDao.listar();
 		System.out.println("erro persiste");
 		ModelAndView modelAndView = new ModelAndView("/produtos/lista");
-		modelAndView.addObject("produtos",produtos);		
+		modelAndView.addObject("produtos", produtos);
 		return modelAndView;
 	}
 

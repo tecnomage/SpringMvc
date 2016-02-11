@@ -3,9 +3,10 @@
     Created on : 25/01/2016, 22:52:26
     Author     : Michel A. Medeiros
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -108,7 +109,8 @@
                 </dt>
 
                 <dt class="infosAdicionaisDoLivro-info-titulo">
-                    Data de publicação: ${produto.dataLancamento}
+                    Data de publicação: 
+                     <fmt:FormatDate pattern="dd/MM/yyyy" value="${produto.dataLancamento.time}"/>
                 </dt>   
             </section>
 

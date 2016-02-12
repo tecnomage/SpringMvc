@@ -3,7 +3,8 @@
     Created on : 25/01/2016, 22:52:26
     Author     : Michel A. Medeiros
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -64,7 +65,7 @@
                     </div>
                 </div>
                 
-                form action="/carrinho/add" method="POST" class="adicionarAoCarrinho">
+                <form action="/carrinho/add" method="POST" class="adicionarAoCarrinho">
                     <ul class="adicionarAoCarrinho-listaOfertas">
 
                         <input type="hidden" value="${produto.id}" name="produtoId" />
@@ -110,7 +111,7 @@
 
                 <dt class="infosAdicionaisDoLivro-info-titulo">
                     Data de publicação: 
-                     <fmt:FormatDate pattern="dd/MM/yyyy" value="${produto.dataLancamento.time}"/>
+                     <fmt:formatDate pattern="dd/MM/yyyy" value="${produto.dataLancamento.time}" />
                 </dt>   
             </section>
 

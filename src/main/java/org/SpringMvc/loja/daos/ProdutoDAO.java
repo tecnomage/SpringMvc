@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository //torna visivel a injeção de dependencia pro Spring
 @Transactional //Spring faz a transaçao
-public class ProdutoDao {
+public class ProdutoDAO {
 
 	@PersistenceContext
 	private EntityManager manager;

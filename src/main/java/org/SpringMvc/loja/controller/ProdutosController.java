@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.SpringMvc.loja.daos.ProdutoDao;
+import org.SpringMvc.loja.daos.ProdutoDAO;
 import org.SpringMvc.loja.infra.Filesaver;
 import org.SpringMvc.loja.modelos.Produto;
 import org.SpringMvc.loja.modelos.TipoPreco;
@@ -25,7 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ProdutosController {
 
 	@Autowired
-	private ProdutoDao produtoDao;
+	private ProdutoDAO produtoDao;
 
 	@Autowired
 	private Filesaver filesaver;

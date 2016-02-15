@@ -4,6 +4,7 @@
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletRegistration.Dynamic;
 
+import org.SpringMvc.loja.daos.ProdutoDAO;
 import org.SpringMvc.loja.infra.Filesaver;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.web.filter.CharacterEncodingFilter;
@@ -21,7 +22,7 @@ public class ServletSpringMvc extends AbstractAnnotationConfigDispatcherServletI
 	protected Class<?>[] getServletConfigClasses() {
 		// TODO Auto-generated method stub
 		return new Class[]{AppWebConfiguration.class,JpaConfiguration.class,
-				Filesaver.class};
+				Filesaver.class,ProdutoDAO.class};
 	}
 
 	@Override

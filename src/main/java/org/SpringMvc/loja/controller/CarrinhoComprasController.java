@@ -1,7 +1,6 @@
 package org.SpringMvc.loja.controller;
 
 import org.SpringMvc.loja.daos.ProdutoDAO;
-import org.SpringMvc.loja.daos.ProdutoDao;
 import org.SpringMvc.loja.modelos.CarrinhoCompras;
 import org.SpringMvc.loja.modelos.CarrinhoItem;
 import org.SpringMvc.loja.modelos.Produto;
@@ -24,10 +23,11 @@ public class CarrinhoComprasController{
 	@RequestMapping("/add")
 	public ModelAndView add(Integer produtoId, TipoPreco tipoPreco){
 		ModelAndView modelAndView = new ModelAndView("redirect:/produtos");
-		CarrinhoItem carrinho = criaItem(produto,tipoPreco);
+		CarrinhoItem carrinhoItem = criaItem(produtoId,tipoPreco);
+		System.out.println("teste carrinho controller");
+		carrinho.add(carrinhoItem);
 		
-		modelAndView.addObject();
-		
+			
 		return modelAndView;
 	}
 

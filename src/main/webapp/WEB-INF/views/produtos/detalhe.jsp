@@ -25,7 +25,45 @@
         <title>${produto.titulo} - Casa do Código</title>
     </head>
     <body>
+		<style scoped="scoped">
+		#menu {
+    width: 550px;
+    height: 35px;
+    font-size: 16px;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 3px 2px 3px #333333;
+    background-color: #8AD9FF;
+        border-radius: 8px;
+}
 
+#menu ul{
+    height: auto;
+    padding: 8px 0px;
+    margin:  0px;
+}
+
+#menu li{
+    display: inline;
+    padding: 20px;
+}
+
+#menu a {
+    text-decoration: none;
+    color: #00F;
+    padding: 8px 8px 8px 8px;
+}
+		</style>
+		<div id="menu">
+		<ul>
+		  <li><a href="#" rel="nofollow">
+		  Seu carrinho (${carrinhoCompras.quantidade})</a></li>
+		  
+		  <li><a href="/produtos/lista/">Listagem de Livros</a></li>
+		</ul>
+		</div>
+		
         <article id="${produto.id}" itemscope>
             <section class="conteudoDoLivro infoSection" itemprop="description">
                 <div class="cabecalhoProduto-tituloEAutor">
@@ -65,7 +103,7 @@
                     </div>
                 </div>
                 
-                <form action="/carrinho/add" method="POST" class="adicionarAoCarrinho">
+                <form action='<c:url value="/carrinho/add"/>' method="POST" class="adicionarAoCarrinho">
                     <ul class="adicionarAoCarrinho-listaOfertas">
 
                         <input type="hidden" value="${produto.id}" name="produtoId" />

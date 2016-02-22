@@ -30,9 +30,9 @@ public class AppWebConfiguration {
 		resolver.setSuffix(".jsp");
 		
 		//todos nossos beas ficarao disponíveis como atributos no jsp
-		   resolver.setExposeContextBeansAsAttributes(true);
-		  //resolver.setExposedContextBeanNames("carrinhoCompras");
-		
+		  // resolver.setExposeContextBeansAsAttributes(true);
+		  resolver.setExposedContextBeanNames("carrinhoCompras");
+		//https://youtu.be/3fLg1EH4fQQ?t=1524
 		
 		return resolver;
 	}

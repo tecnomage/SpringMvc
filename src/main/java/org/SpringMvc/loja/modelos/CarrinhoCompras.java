@@ -3,11 +3,14 @@ package org.SpringMvc.loja.modelos;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
 
 import com.sun.org.apache.xml.internal.security.utils.ElementCheckerImpl.InternedNsChecker;
 
 @Component
+@Scope(value=WebApplicationContext.SCOPE_SESSION)
 public class CarrinhoCompras {
 
 	private Map<CarrinhoItem, Integer> itens = new LinkedHashMap<CarrinhoItem, Integer>();

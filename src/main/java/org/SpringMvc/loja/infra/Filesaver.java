@@ -23,13 +23,16 @@ public class Filesaver {
 				
 				//pega o caminho absoluto do arquivo
 				String realPath= request.getServletContext().getRealPath("/" + basePath);
+				System.out.println(realPath);
 				//String realPath= "C:\Users\viniciusbraga\git\SpringMvc\src\main\webapp\arquivos-sumario";
 				String path = realPath + "/" + file.getOriginalFilename();
 				
+				 System.out.println(basePath + "/" + file.getOriginalFilename());											
 				//realiza a transferencia
 				file.transferTo(new File(path));
 				
-				System.out.println(basePath + "/" + file.getOriginalFilename());
+				//System.out.println(basePath + "/" + file.getOriginalFilename());
+				System.out.println(path);				
 				return basePath + "/" + file.getOriginalFilename();
 				
 				

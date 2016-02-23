@@ -27,10 +27,8 @@ public class CarrinhoComprasController{
 	public ModelAndView add(Integer produtoId, TipoPreco tipoPreco){
 		ModelAndView modelAndView = new ModelAndView("redirect:/produtos");
 		CarrinhoItem carrinhoItem = criaItem(produtoId,tipoPreco);
-		System.out.println("teste carrinho controller");
 		carrinho.add(carrinhoItem);
 		
-			
 		return modelAndView;
 	}
 

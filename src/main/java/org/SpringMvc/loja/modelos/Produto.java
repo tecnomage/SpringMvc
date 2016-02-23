@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.List;
 
@@ -117,6 +118,11 @@ public class Produto {
 	@Override
 	public String toString() {
 		return "Produto [titulo=" + titulo + ", decricao=" + descricao + ", paginas=" + paginas + "]";
+	}
+	public BigDecimal precoPara(TipoPreco tipoPreco) {
+		return precos.stream().filter(preco -> preco.getTipoPreco().equals(tipoPreco))
+				.findFirst().get().getValor();
+		
 	}
 
 }

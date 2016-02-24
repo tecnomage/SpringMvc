@@ -60,7 +60,8 @@
 		  <li><a href="#" rel="nofollow">
 		  Seu carrinho (${carrinhoCompras.quantidade})</a></li>
 		  
-		  <li><a href="/produtos/lista/">Listagem de Livros</a></li>
+		  
+		  <li><a href='<c:url value="produtos/lista/"/>'>Listagem de Livros</a></li>
 		</ul>
 		</div>
 		

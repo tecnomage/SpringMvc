@@ -1,5 +1,6 @@
 package org.SpringMvc.loja.modelos;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -10,11 +11,15 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.sun.org.apache.xml.internal.security.utils.ElementCheckerImpl.InternedNsChecker;
+import com.sun.xml.internal.ws.developer.Serialization;
+
 
 @Component
 @Scope(value=WebApplicationContext.SCOPE_SESSION)
-public class CarrinhoCompras {
+public class CarrinhoCompras implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Map<CarrinhoItem, Integer> itens = new LinkedHashMap<CarrinhoItem, Integer>();
 
 	public void add(CarrinhoItem item) {
@@ -22,7 +27,7 @@ public class CarrinhoCompras {
 
 	}
 
-	private int getQuantidade(CarrinhoItem item) {
+	public int getQuantidade(CarrinhoItem item) {
 		if (!itens.containsKey(item)) {
 			itens.put(item, 0);
 		}
@@ -48,6 +53,10 @@ public class CarrinhoCompras {
 			total = total.add(getTotal(item));
 		}
 		return total;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }

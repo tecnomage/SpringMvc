@@ -1,8 +1,14 @@
 package org.SpringMvc.loja.modelos;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class CarrinhoItem {
+public class CarrinhoItem implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private Produto produto;
 	private TipoPreco tipoPreco;
@@ -13,26 +19,24 @@ public class CarrinhoItem {
 
 	}
 
-	public BigDecimal getPreco(){
-		return produto.precoPara(tipoPreco);
-		
-	}
-
 	public Produto getProduto() {
+		System.err.println("erro");
 		return produto;
 	}
 
-	public void setProduto(Produto produto) {
-		this.produto = produto;
+	public String getProdutoTitulo() {
+		return this.getProdutoTitulo();
 	}
-
+	
 	public TipoPreco getTipoPreco() {
 		return tipoPreco;
 	}
 
-	public void setTipoPreco(TipoPreco tipoPreco) {
-		this.tipoPreco = tipoPreco;
+	public BigDecimal getPreco(){
+		return produto.precoPara(tipoPreco);
+
 	}
+
 
 	@Override
 	public int hashCode() {
@@ -62,11 +66,11 @@ public class CarrinhoItem {
 		return true;
 	}
 
-	
+
 	public BigDecimal getTotal(int quantidade) {
 		return this.getPreco().multiply(new BigDecimal(quantidade));
 	}
-	
-	
+
+
 
 }

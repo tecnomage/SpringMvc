@@ -61,7 +61,7 @@ public class ProdutosController {
 		produto.setSumarioPath(path);
 
 		produtoDao.gravar(produto);
-		return new ModelAndView("redirect:produtos/ok");
+		return new ModelAndView("redirect:/produtos/ok");
 
 	}
 
@@ -86,7 +86,6 @@ public class ProdutosController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView listar() {
 		List<Produto> produtos = produtoDao.listar();
-		System.out.println("erro persiste");
 		ModelAndView modelAndView = new ModelAndView("/produtos/lista");
 		modelAndView.addObject("produtos", produtos);
 		return modelAndView;

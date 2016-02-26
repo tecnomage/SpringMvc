@@ -13,25 +13,33 @@ public class CarrinhoItem implements Serializable {
 	private Produto produto;
 	private TipoPreco tipoPreco;
 
+	public Produto getProduto() {
+		return this.produto;
+	}
+
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+
+
+	public TipoPreco getTipoPreco() {
+		return tipoPreco;
+	}
+
+
+	public void setTipoPreco(TipoPreco tipoPreco) {
+		this.tipoPreco = tipoPreco;
+	}
+
+
 	public CarrinhoItem(Produto produto, TipoPreco tipoPreco) {
 		this.produto = produto;
 		this.tipoPreco = tipoPreco;
 
 	}
 
-	public Produto getProduto() {
-		System.err.println("erro");
-		return produto;
-	}
-
-	public String getProdutoTitulo() {
-		return this.getProdutoTitulo();
-	}
 	
-	public TipoPreco getTipoPreco() {
-		return tipoPreco;
-	}
-
 	public BigDecimal getPreco(){
 		return produto.precoPara(tipoPreco);
 

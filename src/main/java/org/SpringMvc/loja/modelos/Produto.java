@@ -119,6 +119,7 @@ public class Produto {
 	public String toString() {
 		return "Produto [titulo=" + titulo + ", decricao=" + descricao + ", paginas=" + paginas + "]";
 	}
+	
 	public BigDecimal precoPara(TipoPreco tipoPreco) {
 		return precos.stream().filter(preco -> preco.getTipoPreco().equals(tipoPreco))
 				.findFirst().get().getValor();

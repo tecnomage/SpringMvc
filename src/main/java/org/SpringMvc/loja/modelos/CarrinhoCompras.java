@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -22,7 +23,11 @@ public class CarrinhoCompras implements Serializable {
 
 	private Map<CarrinhoItem, Integer> itens = new LinkedHashMap<>();
 
-	public void add(CarrinhoItem item) {
+	public Set<CarrinhoItem> getItens() {
+		return itens.keySet();
+	}
+	
+		public void add(CarrinhoItem item) {
 		itens.put(item, getQuantidade(item) + 1);
 
 	}
@@ -51,10 +56,6 @@ public class CarrinhoCompras implements Serializable {
 			total = total.add(getTotal(item));
 		}
 		return total;
-	}
-
-	public Collection<CarrinhoItem> getItens() {
-		return itens.keySet();
 	}
 
 	

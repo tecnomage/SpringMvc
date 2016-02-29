@@ -103,13 +103,13 @@
 		        </tr>
 		      </thead>
 		      <tbody>
-			      <c:forEach   items="${carrinhoCompras.itens}" var="itens">
+			      <c:forEach   items="${carrinhoCompras.itens }" var="item">
 			    	<tr>
-                            <td class="item-title">${itens.produto.titulo}</td>
+                            <td class="item-title">${item.produto.titulo}</td>
                             <td class="numeric-cell">${item.tipoPreco }</td>
 			          <td class="quantity-input-cell" input type="number" min="0" readonly="readonly" id="quantidade" name="quantidade" 
-			          		value="${carrinhoCompras.getQuantidade(itens)}"></td>
-                      <td class="numeric-cell">${carrinhoCompras.getTotal(itens)}</td>
+			          		value="${carrinhoCompras.getQuantidade(item)}"></td>
+                      <td class="numeric-cell">${carrinhoCompras.getTotal(item)}</td>
 			          <td class="remove-item">
 			          <form action="" method="POST">
 			          	<input type="image"

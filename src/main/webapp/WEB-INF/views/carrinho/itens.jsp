@@ -103,30 +103,33 @@
 		        </tr>
 		      </thead>
 		      <tbody>
-			      <c:forEach   items="${carrinhoCompras.itens }" var="item">
+			      <c:forEach   items="${carrinhoCompras.itens}" var="itens">
 			    	<tr>
-                            <td class="item-title">${item.produto.titulo}</td>
-                            <td class="numeric-cell">${item.tipoPreco }</td>
-			          <td class="quantity-input-cell" input type="number" min="0" readonly="readonly" id="quantidade" name="quantidade" 
-			          		value="${carrinhoCompras.getQuantidade(item)}"></td>
-                      <td class="numeric-cell">${carrinhoCompras.getTotal(item)}</td>
+                            
+                        <td class="cart-img-col"><img src="http://cdn.shopify.com/s/files/1/0155/7645/products/css-eficiente-featured_large.png?v=1435245145" width="71px" height="100px"/></td><td class="item-title">TÍTULO DO LIVRO AQUI</td>
+                            <td class="item-title">${itens.produto.titulo}</td>
+                            <td class="numeric-cell">${itens.tipoPreco}</td>
+                            <td class="quantity-input-cell"><input type="number" min="0" readonly="readonly" id="quantidade" name="quantidade" 
+			          		value="${carrinhoCompras.getQuantidade(item)}" ></td>
+			          <td class="numeric-cell">${carrinhoCompras.getTotal(item)}</td>
 			          <td class="remove-item">
 			          <form action="" method="POST">
 			          	<input type="image"
 			            src="http:////cdn.shopify.com/s/files/1/0155/7645/t/177/assets/excluir.png?157580795780530083" 
 			          alt="Excluir" title="Excluir"/></td>	
 			          </form>
-                       
-                                        
-                  </tr>
+			            			      
+                      </tr>
 			      </c:forEach>
 		      </tbody>
 			      
 			      <tfoot>
-                      <tr>
+                       <tr>
 			          <td colspan="3"><input type="submit" class="checkout" name="checkout" value="Finalizar compra" /></td>
 			          <td class="numeric-cell">${carrinhoCompras.total}</td>
 			          <td class="quantity-input-cell"><input type="submit" class="update-cart" disabled="disabled" name="update" value=""/></td>
+			          
+			        </tr>
 			      </tfoot>
 		    </table>
 		  

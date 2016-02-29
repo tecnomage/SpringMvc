@@ -33,8 +33,6 @@ public class ProdutoDAO {
 
 	public Produto find(Integer id) {
 		// TODO Auto-generated method stub
-		//System.out.println("com fetch all");
-		System.out.println("consulta original");	
 		//consulta que nao está funcionando
 		return manager.createQuery("select distinct(p) from Produto p "
 				+ " join fetch p.precos where p.id = :id", Produto.class)

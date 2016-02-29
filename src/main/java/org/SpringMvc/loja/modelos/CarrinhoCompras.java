@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.sun.org.apache.xml.internal.security.utils.ElementCheckerImpl.InternedNsChecker;
 import com.sun.xml.internal.ws.developer.Serialization;
 
 
@@ -33,6 +32,7 @@ public class CarrinhoCompras implements Serializable {
 	}
 
 	public Integer getQuantidade(CarrinhoItem item) {
+		System.out.println("entrou no getQuantidade(CarrinhoItem item)");
 		if (!itens.containsKey(item)) {
 			itens.put(item, 0);
 		}
@@ -40,11 +40,16 @@ public class CarrinhoCompras implements Serializable {
 	}
 
 	public int getQuantidade() {
-		return itens.values().stream().reduce(0, (proximo, acumulador) -> proximo + acumulador);
+		System.out.println("entrou no getQuantidade");
+		int valores= itens.values().stream().reduce(0, (proximo, acumulador)-> proximo + acumulador);
+		System.out.println(valores);
+		return valores;
 	}
 
 
 	public BigDecimal getTotal(CarrinhoItem item){
+		System.out.println("entrou no get total do carrinho item");
+		
 		return item.getTotal(getQuantidade(item));
 
 	}

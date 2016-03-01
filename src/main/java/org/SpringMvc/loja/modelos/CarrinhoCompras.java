@@ -36,6 +36,7 @@ public class CarrinhoCompras implements Serializable {
 		if (!itens.containsKey(item)) {
 			itens.put(item, 0);
 		}
+		System.out.println(itens.get(item));
 		return itens.get(item);
 	}
 
@@ -48,15 +49,17 @@ public class CarrinhoCompras implements Serializable {
 
 
 	public BigDecimal getTotal(CarrinhoItem item){
-		System.out.println("entrou no get total do carrinho item");
+		System.out.println("entrou no getTotal do carrinho Compras");
+		BigDecimal varGetTotal=item.getTotal(getQuantidade(item));
+		System.out.println("a varGetTotal é " + varGetTotal);
 		
 		return item.getTotal(getQuantidade(item));
 
 	}
 
 	public BigDecimal getTotal(){
-		BigDecimal total = BigDecimal.ZERO;
-
+		BigDecimal total = null ;
+		System.out.println("	public BigDecimal getTotal()S");
 		for(CarrinhoItem item : this.itens.keySet()){
 			total = total.add(getTotal(item));
 		}

@@ -76,6 +76,8 @@ public class CarrinhoItem implements Serializable {
 
 
 	public BigDecimal getTotal(int quantidade) {
+		BigDecimal total= getPreco().multiply(new BigDecimal(quantidade));
+		System.out.println("get Total do carrinho item"+ total);
 		return this.getPreco().multiply(new BigDecimal(quantidade));
 	}
 

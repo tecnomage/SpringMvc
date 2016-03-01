@@ -110,8 +110,8 @@
                             <td class="item-title">${itens.produto.titulo}</td>
                             <td class="numeric-cell">${itens.tipoPreco}</td>
                             <td class="quantity-input-cell"><input type="number" min="0" readonly="readonly" id="quantidade" name="quantidade" 
-			          		value="${carrinhoCompras.getQuantidade(item)}" ></td>
-			          <td class="numeric-cell">${carrinhoCompras.getTotal(item)}</td>
+			          		value="${carrinhoCompras.getQuantidade(itens)}" ></td>
+			          <td class="numeric-cell">${carrinhoCompras.getTotal(itens)}</td>
 			          <td class="remove-item">
 			          <form action="" method="POST">
 			          	<input type="image"

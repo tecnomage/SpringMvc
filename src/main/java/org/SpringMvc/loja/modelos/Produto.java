@@ -121,6 +121,8 @@ public class Produto {
 	}
 	
 	public BigDecimal precoPara(TipoPreco tipoPreco) {
+		System.out.println(precos.stream().filter(preco -> preco.getTipoPreco().equals(tipoPreco))
+				.findFirst().get().getValor());
 		return precos.stream().filter(preco -> preco.getTipoPreco().equals(tipoPreco))
 				.findFirst().get().getValor();
 		

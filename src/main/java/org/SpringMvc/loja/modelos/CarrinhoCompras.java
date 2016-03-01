@@ -32,6 +32,7 @@ public class CarrinhoCompras implements Serializable {
 	}
 
 	public Integer getQuantidade(CarrinhoItem item) {
+		//provável do erro estar aqui
 		System.out.println("entrou no getQuantidade(CarrinhoItem item)");
 		if (!itens.containsKey(item)) {
 			itens.put(item, 0);
@@ -41,7 +42,7 @@ public class CarrinhoCompras implements Serializable {
 	}
 
 	public int getQuantidade() {
-		System.out.println("entrou no getQuantidade");
+		System.out.println("entrou no getQuantidade do carrinho compras");
 		int valores= itens.values().stream().reduce(0, (proximo, acumulador)-> proximo + acumulador);
 		System.out.println(valores);
 		return valores;
@@ -59,7 +60,7 @@ public class CarrinhoCompras implements Serializable {
 
 	public BigDecimal getTotal(){
 		BigDecimal total = null ;
-		System.out.println("	public BigDecimal getTotal()S");
+		System.out.println("public BigDecimal getTotal()S");
 		for(CarrinhoItem item : this.itens.keySet()){
 			total = total.add(getTotal(item));
 		}

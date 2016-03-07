@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -15,7 +16,8 @@ import com.sun.xml.internal.ws.developer.Serialization;
 
 
 @Component
-@Scope(value=WebApplicationContext.SCOPE_SESSION)
+@Scope(value=WebApplicationContext.SCOPE_SESSION ,
+proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class CarrinhoCompras implements Serializable {
 
 	private static final long serialVersionUID = 1L;

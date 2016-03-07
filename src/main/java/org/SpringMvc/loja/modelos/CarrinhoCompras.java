@@ -59,7 +59,7 @@ public class CarrinhoCompras implements Serializable {
 	}
 
 	public BigDecimal getTotal(){
-		BigDecimal total = null ;
+		BigDecimal total = BigDecimal.ZERO;
 		System.out.println("public BigDecimal getTotal()S");
 		for(CarrinhoItem item : this.itens.keySet()){
 			total = total.add(getTotal(item));

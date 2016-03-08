@@ -1,6 +1,6 @@
 <%@page import="javax.servlet.descriptor.TaglibDescriptor"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,11 +11,12 @@
 </head>
 <body>
 	
+    <div>${sucesso}</div>
 	<table>
 		<tr>
-			<td>TÌtulo</td>
-			<td>DescriÁao</td>
-			<td>p·ginas</td>
+			<td>T√≠tulo</td>
+			<td>Descri√ßao</td>
+			<td>p√°ginas</td>
 			<td>Detalhe</td>
 		</tr>
 	<!-- foreach para imprimir a listagem de produtos -->

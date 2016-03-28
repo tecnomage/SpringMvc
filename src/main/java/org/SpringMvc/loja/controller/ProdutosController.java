@@ -10,6 +10,7 @@ import org.SpringMvc.loja.modelos.Produto;
 import org.SpringMvc.loja.modelos.TipoPreco;
 import org.SpringMvc.loja.validation.ProdutoValidation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -47,6 +48,7 @@ public class ProdutosController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
+	@CacheEvict(value="produtoHome", allEntries=true)
 	public ModelAndView gravar(MultipartFile sumario, @Valid Produto produto, BindingResult result) {
 
 		System.out.println(sumario.getOriginalFilename());
@@ -61,7 +63,8 @@ public class ProdutosController {
 		produto.setSumarioPath(path);
 
 		produtoDao.gravar(produto);
-		return new ModelAndView("redirect:/produtos/ok");
+		
+		return new ModelAndView("produtos/ok");
 
 	}
 

@@ -1,13 +1,15 @@
 package org.SpringMvc.loja.conf;
 
-import javax.swing.text.DateFormatter;
+import javax.persistence.Cache;
 
 import org.SpringMvc.loja.controller.HomeController;
 import org.SpringMvc.loja.controller.PagamentoController;
 import org.SpringMvc.loja.daos.ProdutoDAO;
 import org.SpringMvc.loja.infra.Filesaver;
 import org.SpringMvc.loja.modelos.CarrinhoCompras;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,6 +22,10 @@ import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+
 
 @EnableWebMvc
 @EnableCaching
@@ -74,5 +80,13 @@ public class AppWebConfiguration {
 	public RestTemplate restTemplate(){
 		return new RestTemplate();
 	}
+	
+	@Bean
+    public CacheManager cacheManager() {
+		//FIXME nao está importanto,pq nao importa?
+		CacheBuilder
+			
+		 
+        }
 	
 }

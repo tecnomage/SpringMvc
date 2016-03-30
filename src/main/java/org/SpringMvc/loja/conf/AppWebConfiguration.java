@@ -1,5 +1,7 @@
 package org.SpringMvc.loja.conf;
 
+import java.util.concurrent.TimeUnit;
+
 import javax.persistence.Cache;
 
 import org.SpringMvc.loja.controller.HomeController;
@@ -9,6 +11,7 @@ import org.SpringMvc.loja.infra.Filesaver;
 import org.SpringMvc.loja.modelos.CarrinhoCompras;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.guava.GuavaCacheManager;
 import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -26,67 +29,68 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 
-
 @EnableWebMvc
 @EnableCaching
-@ComponentScan(basePackageClasses={HomeController.class,ProdutoDAO.class,
-		Filesaver.class,CarrinhoCompras.class,PagamentoController.class})
+@ComponentScan(basePackageClasses = { HomeController.class, ProdutoDAO.class, Filesaver.class, CarrinhoCompras.class,
+		PagamentoController.class })
 public class AppWebConfiguration {
-	
+
 	@Bean
-	public InternalResourceViewResolver internalResourceViewResolver(){
+	public InternalResourceViewResolver internalResourceViewResolver() {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
-		
-		//todos nossos beas ficarao disponíveis como atributos no jsp
-		  // resolver.setExposeContextBeansAsAttributes(true);
-		  resolver.setExposedContextBeanNames("carrinhoCompras");
-		//https://youtu.be/3fLg1EH4fQQ?t=1524
-		
+
+		// todos nossos beas ficarao disponíveis como atributos no jsp
+		// resolver.setExposeContextBeansAsAttributes(true);
+		resolver.setExposedContextBeanNames("carrinhoCompras");
+		// https://youtu.be/3fLg1EH4fQQ?t=1524
+
 		return resolver;
 	}
-	
-	@Bean
-    public MessageSource messageSource() {
-        ReloadableResourceBundleMessageSource messageSource =
-                new ReloadableResourceBundleMessageSource();
-
-        messageSource.setBasename("/WEB-INF/messages");
-        messageSource.setDefaultEncoding("UTF-8");
-        messageSource.setCacheSeconds(1);
-
-        return messageSource;
-    }
 
 	@Bean
-    public FormattingConversionService mvcConversionService() {
-        DefaultFormattingConversionService conversionService = new DefaultFormattingConversionService();
-        DateFormatterRegistrar registra = new DateFormatterRegistrar();
-        registra.setFormatter(new org.springframework.format.datetime.DateFormatter("dd/MM/yyyy"));
-        registra.registerFormatters(conversionService);
+	public MessageSource messageSource() {
+		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
 
-        return conversionService;
+		messageSource.setBasename("/WEB-INF/messages");
+		messageSource.setDefaultEncoding("UTF-8");
+		messageSource.setCacheSeconds(1);
 
-    }	
-	
+		return messageSource;
+	}
+
+	@Bean
+	public FormattingConversionService mvcConversionService() {
+		DefaultFormattingConversionService conversionService = new DefaultFormattingConversionService();
+		DateFormatterRegistrar registra = new DateFormatterRegistrar();
+		registra.setFormatter(new org.springframework.format.datetime.DateFormatter("dd/MM/yyyy"));
+		registra.registerFormatters(conversionService);
+
+		return conversionService;
+
+	}
+
 	@Bean
 	public MultipartResolver multipartResolver() {
-	    return new StandardServletMultipartResolver();
+		return new StandardServletMultipartResolver();
 	}
-	
-	
+
 	@Bean
-	public RestTemplate restTemplate(){
+	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
-	
+
 	@Bean
-    public CacheManager cacheManager() {
-		//FIXME nao está importanto,pq nao importa?
-		CacheBuilder
-			
-		 
-        }
-	
+	public CacheManager cacheManager() {
+		// FIXME nao está importanto,pq nao importa?
+		CacheBuilder<Object, Object> cacheBuilder = CacheBuilder.newBuilder().maximumSize(100).expireAfterAccess(5,
+				TimeUnit.MINUTES);
+		GuavaCacheManager guavaCacheManager = new GuavaCacheManager();
+		guavaCacheManager.setCacheBuilder(cacheBuilder);
+
+		return guavaCacheManager;
+
+	}
+
 }

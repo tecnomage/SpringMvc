@@ -27,7 +27,7 @@ public class JpaConfiguration {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setUsername("root");
 		dataSource.setPassword("");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/Springmvc");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/SpringMvc");
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		
 		factoryBean.setDataSource(dataSource);

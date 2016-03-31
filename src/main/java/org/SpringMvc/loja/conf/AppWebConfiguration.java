@@ -41,7 +41,7 @@ public class AppWebConfiguration {
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
 
-		// todos nossos beas ficarao disponíveis como atributos no jsp
+		// todos nossos beans ficarao disponíveis como atributos no jsp
 		// resolver.setExposeContextBeansAsAttributes(true);
 		resolver.setExposedContextBeanNames("carrinhoCompras");
 		// https://youtu.be/3fLg1EH4fQQ?t=1524
@@ -66,8 +66,8 @@ public class AppWebConfiguration {
 		DateFormatterRegistrar registra = new DateFormatterRegistrar();
 		registra.setFormatter(new org.springframework.format.datetime.DateFormatter("dd/MM/yyyy"));
 		registra.registerFormatters(conversionService);
-
 		return conversionService;
+		
 
 	}
 

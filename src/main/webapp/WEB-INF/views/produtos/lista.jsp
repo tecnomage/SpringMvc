@@ -7,7 +7,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="resources/css/bootstrap-theme.min.css">
+<script src="resources/js/bootstrap.min.js"></script>
 <title>Listagem de livros</title>
+
+
 </head>
 <body>
 	

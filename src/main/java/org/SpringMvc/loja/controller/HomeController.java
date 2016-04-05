@@ -21,7 +21,7 @@ public class HomeController {
 	//TODO falta fazer o download da home e ajeita-la
 	@RequestMapping("/")
 	@Cacheable(value="produtoHome")
-	public ModelAndView Index(){
+	public ModelAndView index(){
 		
 		ModelAndView modelAndView = new ModelAndView("home");
 		System.out.println("testando o projeto");

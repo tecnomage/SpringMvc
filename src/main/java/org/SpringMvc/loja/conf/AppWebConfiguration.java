@@ -71,7 +71,6 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 		registra.setFormatter(new org.springframework.format.datetime.DateFormatter("dd/MM/yyyy"));
 		registra.registerFormatters(conversionService);
 		return conversionService;
-		
 
 	}
 
@@ -87,7 +86,6 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
 	@Bean
 	public CacheManager cacheManager() {
-		// FIXME nao está importanto,pq nao importa?
 		CacheBuilder<Object, Object> cacheBuilder = CacheBuilder.newBuilder().maximumSize(100).expireAfterAccess(5,
 				TimeUnit.MINUTES);
 		GuavaCacheManager guavaCacheManager = new GuavaCacheManager();
@@ -97,27 +95,23 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
 	}
 
-	
 	@Bean
-	public ViewResolver contentNegotiationViewResolver(ContentNegotiationManager manager ) {
-		
-		List<ViewResolver> viewResolver = new ArrayList<>(); 
+	public ViewResolver contentNegotiationViewResolver(ContentNegotiationManager manager) {
+
+		List<ViewResolver> viewResolver = new ArrayList<>();
 		viewResolver.add(internalResourceViewResolver());
 		viewResolver.add(new JsonViewResolver());
-		
+
 		ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
 		resolver.setViewResolvers(viewResolver);
 		resolver.setContentNegotiationManager(manager);
 		return resolver;
 	}
-	
-	
 
-@Override
-public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-	configurer.enable();
+	@Override
+	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+		configurer.enable();
 
-} 	
-	
-	
+	}
+
 }

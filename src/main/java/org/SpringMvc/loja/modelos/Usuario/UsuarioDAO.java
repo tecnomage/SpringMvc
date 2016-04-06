@@ -5,15 +5,18 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UsuarioDao {
+public class UsuarioDAO implements UserDetailsService{
 	
 	@PersistenceContext
 	private EntityManager manager;
 	
-	public Usuario find(String email){
+	public Usuario loadUserByUsername(String email){
 		
 		List<Usuario> usuarios = manager.createQuery("Select u From Usuario"
 				+ " Where u.email := email",Usuario.class)
@@ -21,10 +24,12 @@ public class UsuarioDao {
 			.getResultList();
 		
 		if (usuarios.isEmpty()){
-			throw new RuntimeException("Usuario" + email +"nao foi encontrado");
+			throw new UsernameNotFoundException("Usuario" + email +"nao foi encontrado");
 		}
 		
 		return usuarios.get(0);
 	}
+
+	
 
 }

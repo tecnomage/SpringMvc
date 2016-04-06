@@ -1,6 +1,6 @@
 package org.SpringMvc.loja.conf;
 
-import java.util.ArrayList;
+ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -9,8 +9,10 @@ import org.SpringMvc.loja.controller.PagamentoController;
 import org.SpringMvc.loja.daos.ProdutoDAO;
 import org.SpringMvc.loja.infra.Filesaver;
 import org.SpringMvc.loja.modelos.CarrinhoCompras;
+import org.SpringMvc.loja.modelos.Usuario.UsuarioDAO;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.guava.GuavaCache;
 import org.springframework.cache.guava.GuavaCacheManager;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -34,8 +36,8 @@ import com.google.common.cache.CacheBuilder;
 
 @EnableWebMvc
 @EnableCaching
-@ComponentScan(basePackageClasses = { HomeController.class, ProdutoDAO.class, Filesaver.class, CarrinhoCompras.class,
-		PagamentoController.class })
+@ComponentScan(basePackageClasses = { HomeController.class, ProdutoDAO.class, UsuarioDAO.class, Filesaver.class,
+		CarrinhoCompras.class, PagamentoController.class })
 
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
@@ -88,7 +90,7 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 	public CacheManager cacheManager() {
 		CacheBuilder<Object, Object> cacheBuilder = CacheBuilder.newBuilder().maximumSize(100).expireAfterAccess(5,
 				TimeUnit.MINUTES);
-		GuavaCacheManager guavaCacheManager = new GuavaCacheManager();
+		  GuavaCacheManager guavaCacheManager = new GuavaCacheManager();
 		guavaCacheManager.setCacheBuilder(cacheBuilder);
 
 		return guavaCacheManager;

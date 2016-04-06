@@ -29,9 +29,8 @@ integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7
 <!--<script src="resources/js/bootstrap.min.js"></script>-->
 <style type="text/css">
 body {
-	padding-top:60px; 
+	padding-top: 60px;
 }
-
 </style>
 
 <title>Listagem de livros</title>
@@ -39,22 +38,25 @@ body {
 
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-link navbar-fixed-top">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <li> <a href="${s:mvcUrl('PC#listar').build()}">Listagem de Produtos</a></li>
-      <li> <a href="${s:mvcUrl('PC#form').build()}">Cadastro de Produtos</a></li>	
-    </div>
+	<nav class="navbar navbar-inverse navbar-link navbar-fixed-top">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+				aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<li><a href="${s:mvcUrl('PC#listar').build()}">Listagem de
+					Produtos</a></li>
+			<li><a href="${s:mvcUrl('PC#form').build()}">Cadastro de
+					Produtos</a></li>
+		</div>
 	</div>
 	</nav>
-	
+
 	<div>${sucesso}</div>
 	<div class="container">
 		<table class="table table-striped table-hover">

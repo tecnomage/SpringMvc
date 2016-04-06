@@ -1,18 +1,30 @@
 package org.SpringMvc.loja.modelos.Usuario;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-public class Usuario {
+import org.SpringMvc.loja.modelos.Role;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+@Entity
+public class Usuario  implements UserDetails{
 
 	@Id
 	private String email;
 	private String nome;
 	private String senha;
 	
-	private List<Role> permissoes = new ArrayList<>();
+	@Autowired
+	@OneToMany(fetch=FetchType.EAGER)
+	private List<Role> role = new ArrayList<>();
 
 	public String getEmail() {
 		return email;
@@ -38,12 +50,52 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public List<Role> getPermissoes() {
-		return permissoes;
+	public List<Role> getRole() {
+		return role;
 	}
 
-	public void setPermissoes(List<Role> permissoes) {
-		this.permissoes = permissoes;
+	public void setRole(List<Role> role) {
+		this.role = role;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return this.role;
+	}
+
+	@Override
+	public String getPassword() {
+		return this.senha;
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

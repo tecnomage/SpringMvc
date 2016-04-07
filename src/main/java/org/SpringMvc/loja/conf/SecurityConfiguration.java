@@ -15,25 +15,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UsuarioDAO usuarioDAO;
-	
-	
-	@Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-        .antMatchers("/produtos/form").hasRole("ADMIN")
-        .antMatchers("carrinho").permitAll()
-        .antMatchers("/produtos").hasRole("ADMIN")
-        .antMatchers("/produtos/**").permitAll()
-        .antMatchers("/").permitAll()
-        .anyRequest().authenticated().and().formLogin();
 
-    }
-	
-	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests().antMatchers("/produtos/form").hasRole("ADMIN").antMatchers("carrinho").permitAll()
+				.antMatchers("/produtos").hasRole("ADMIN").antMatchers("/produtos/**").permitAll().antMatchers("/")
+				.permitAll().anyRequest().authenticated().and().formLogin();
+
+	}
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-			auth.userDetailsService(usuarioDAO)
-			.passwordEncoder(new BCryptPasswordEncoder());
+		auth.userDetailsService(usuarioDAO);
+		//.passwordEncoder(new BCryptPasswordEncoder()
 	}
 
 }

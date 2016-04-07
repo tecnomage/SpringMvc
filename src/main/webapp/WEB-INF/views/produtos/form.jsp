@@ -37,12 +37,11 @@ body {
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="${s:mvcUrl('HC#index').build()}">Casa
-				do Código</a>
-			<li><a href="${s:mvcUrl('PC#listar').build()}">Listagem de
-					Produtos</a></li> <a href="${s:mvcUrl('PC#form').build()}">Cadastro de
-				Produtos</a>
-			</li>
+			<a class="navbar-brand" href="#">Casa do Código</a>
+				<ul>
+			<li><a href="${s:mvcUrl('PC#listar').build() }">Listagem de	Produtos</a></li>
+			<li> <a href="${s:mvcUrl('PC#form').build() }">Cadastro de Produtos</a></li>
+			</ul>
 		</div>
 	</div>
 	</nav>

@@ -9,13 +9,11 @@
 	<h1 class="cdc-call">Todos os livros</h1>
 	<ul class="clearfix book-collection">
 		<c:forEach items="${produtos}" var="produto">
-			<li><a
-				href="${s:mvcUrl('PC#detalhe').arg(0,produto.id).build()}"
-				class="block clearfix">
+			<li><a href="${s:mvcUrl('PC#detalhe').arg(0,produto.id).build()}" class="block clearfix"></a>
 					<h2 class="product-title">${produto.titulo}</h2> <img width="143"
 					height="202" src="${produto.sumarioPath}" title="${produto.titulo}"
 					alt="${produto.titulo}"> <small class="buy-button">Compre</small>
-			</a></li>
+			</li>
 		</c:forEach>
 	</ul>
 	<ul id="cdc-diferenciais" class="clearfix">
@@ -53,4 +51,3 @@
 	</ul>
 </section>
 </html>
-</tags:pageTemplate>

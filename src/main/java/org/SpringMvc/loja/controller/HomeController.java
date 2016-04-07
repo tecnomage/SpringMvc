@@ -12,14 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping("/")
 public class HomeController {
 	
 	@Autowired
 	private ProdutoDAO produtoDao;
 	
+	//FIXME nao está entrando na home
 	
-	//TODO falta fazer o download da home e ajeita-la
-	@RequestMapping("/")
+	
 	@Cacheable(value="produtoHome")
 	public ModelAndView index(){
 		

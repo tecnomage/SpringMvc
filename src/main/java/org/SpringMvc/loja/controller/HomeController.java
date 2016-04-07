@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/")
 public class HomeController {
 	
 	@Autowired
@@ -22,6 +21,7 @@ public class HomeController {
 	
 	
 	@Cacheable(value="produtoHome")
+	@RequestMapping("/")
 	public ModelAndView index(){
 		
 		ModelAndView modelAndView = new ModelAndView("home");

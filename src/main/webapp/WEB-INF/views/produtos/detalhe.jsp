@@ -169,6 +169,7 @@
 							<button class="adicionarAoCarrinho-botaoComprar" type="submit"
 								name="id" value="10263481793" title="${produto.titulo}">
 								Comprar</button>
+								<input type="hidden"    name="_csrf.parameterName"   value="${_csrf.token}" >  
 						</li>
 					</c:forEach>
 				</ul>
